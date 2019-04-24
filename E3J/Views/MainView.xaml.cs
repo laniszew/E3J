@@ -12,19 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using E3J.ViewModels;
 
-namespace E3J
+namespace E3J.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainView : Page
     {
-        public MainWindow()
+        public MainView()
         {
             InitializeComponent();
-            DataContext = new SampleViewModel();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs args)
+        {
+
         }
     }
 }
