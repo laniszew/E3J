@@ -4,40 +4,27 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:E3J.Views"
+      xmlns:converters="clr-namespace:E3J.ViewModels.Converters"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainView">
-
-    <Grid Margin="-506,0,-555,-115" HorizontalAlignment="Right" Width="1861" Height="565" VerticalAlignment="Bottom">
-        <Button Content="Button" HorizontalAlignment="Left" Margin="308,61,0,0" VerticalAlignment="Top" Width="43" Click="Button_Click" Height="18"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="351,61,0,0" VerticalAlignment="Top" Width="43" Click="Button_Click" Height="18"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="308,125,0,0" VerticalAlignment="Top" Width="43" Click="Button_Click" Height="18"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="351,125,0,0" VerticalAlignment="Top" Width="43" Click="Button_Click" Height="18"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="308,184,0,0" VerticalAlignment="Top" Width="43" Click="Button_Click" Height="18"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="351,184,0,0" VerticalAlignment="Top" Width="43" Click="Button_Click" Height="18"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="308,247,0,0" VerticalAlignment="Top" Width="43" Click="Button_Click" Height="18"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="351,247,0,0" VerticalAlignment="Top" Width="43" Click="Button_Click" Height="18"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="308,313,0,0" VerticalAlignment="Top" Width="43" Click="Button_Click" Height="18"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="351,313,0,0" VerticalAlignment="Top" Width="43" Click="Button_Click" Height="18"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="308,369,0,0" VerticalAlignment="Top" Width="43" Click="Button_Click" Height="18"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="351,369,0,0" VerticalAlignment="Top" Width="43" Click="Button_Click" Height="18"/>
-        <TextBlock HorizontalAlignment="Left" Margin="38,66,0,0" TextWrapping="Wrap" Text="W aist" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="38,66,0,0" TextWrapping="Wrap" Text="W aist" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="38,130,0,0" TextWrapping="Wrap" Text="S houlder" VerticalAlignment="Top" Width="63"/>
-        <TextBlock HorizontalAlignment="Left" Margin="38,189,0,0" TextWrapping="Wrap" Text="E lbow" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="38,249,0,0" TextWrapping="Wrap" Text="T wist" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="38,318,0,0" TextWrapping="Wrap" Text="P itch" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="38,374,0,0" TextWrapping="Wrap" Text="R oil" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="547,59,0,0" VerticalAlignment="Top" Width="74"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="717,59,0,0" VerticalAlignment="Top" Width="74"/>
-        <TextBox HorizontalAlignment="Left" Height="24" Margin="547,84,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="74"/>
-        <TextBlock HorizontalAlignment="Left" Margin="626,85,0,0" TextWrapping="Wrap" Text="%" VerticalAlignment="Top" Height="23" Width="12" RenderTransformOrigin="-1.361,0.507"/>
-        <TextBlock HorizontalAlignment="Left" Margin="547,21,0,0" TextWrapping="Wrap" Text="Jog Speed" VerticalAlignment="Top" Width="91"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="604,208,0,0" VerticalAlignment="Top" Width="74"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="774,208,0,0" VerticalAlignment="Top" Width="74"/>
-        <TextBox HorizontalAlignment="Left" Height="24" Margin="604,233,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="74"/>
-        <TextBlock HorizontalAlignment="Left" Margin="517,236,0,0" TextWrapping="Wrap" Text="Rotational" VerticalAlignment="Top" Width="82"/>
-        <TextBlock HorizontalAlignment="Left" Margin="689,236,0,0" TextWrapping="Wrap" Text="Deg" VerticalAlignment="Top"/>
-
+  <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="40*" />
+            <RowDefinition Height="15*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="7*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <!--<HeaderedItemsControl Grid.Row="0" Grid.ColumnSpan="3">
+            <Frame Source="UIControls/Header/View/Header.xaml" NavigationUIVisibility="Hidden"></Frame>
+        </HeaderedItemsControl>-->
+        <Frame Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Source="ConnectionSettings.xaml" NavigationUIVisibility="Hidden" VerticalAlignment="Top" />
+        <Frame Grid.Row="1" Grid.Column="1" Source="JogControl.xaml" NavigationUIVisibility="Hidden" VerticalAlignment="Top" />   
     </Grid>
 </Page>
