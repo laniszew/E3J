@@ -149,7 +149,7 @@
                 <ComboBoxItem Content="RS485-rts"/>
             </ComboBox>
             <Label Content="Connection settings:" />
-            <ToggleButton x:Name="ConnectionToggle" Style="{StaticResource AnimatedSwitch}" Height="25"  VerticalAlignment="Center" Background="#C94141" Command="{Binding ConnectionCommand}" CommandParameter="{Binding ElementName=ConnectionToggle, Path=IsChecked}" IsChecked="{Binding ConnectionToggleIsChecked}"/>
+            <ToggleButton x:Name="ConnectionToggle" Style="{StaticResource AnimatedSwitch}" Height="25"  VerticalAlignment="Center" Background="#C94141" Command="{Binding ConnectCommand}" CommandParameter="{Binding ElementName=ConnectionToggle, Path=IsChecked}" IsChecked="{Binding ConnectionToggleIsChecked}"/>
         </StackPanel>
     </Grid>
 </Page>

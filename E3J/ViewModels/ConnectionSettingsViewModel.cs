@@ -5,6 +5,7 @@ using System.Linq;
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
 using Driver;
+using E3J.Messages;
 using E3J.Models;
 using E3J.Models.ValueObjects;
 using E3J.MO;
@@ -24,7 +25,6 @@ namespace E3J.ViewModels
         public string SelectedCOMPort { get; set; }
         public ObservableCollection<string> AvailableCOMPorts { get; set; }
         public E3JManipulator Manipulator { get; set; }
-
 
         public ConnectionSettingsViewModel()
         {
@@ -56,7 +56,7 @@ namespace E3J.ViewModels
         public MessageList MessageList { get; }
 
         [Command]
-        public void ConnectionCommand(object obj)
+        public void Connect(object obj)
         {
             if (null != obj)
             {
@@ -78,6 +78,7 @@ namespace E3J.ViewModels
                     Manipulator.Port.ConnectionStatusChanged += Port_ConnectionStatusChanged;
                     Manipulator.Connect(SelectedCOMPort);
                     Manipulator.Port.DataReceived += Port_DataReceived;
+                    Messenger.Default.Send(new NewManipulatorConnected(Manipulator));
                 }
             }
         }

@@ -81,6 +81,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Messages\NewManipulatorConnected.cs" />
     <Compile Include="Models\DialogHost.cs" />
     <Compile Include="Models\MessageList.cs" />
     <Compile Include="Models\ValueObjects\Message.cs" />

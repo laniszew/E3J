@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:E3J.Views"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="JogControl">
@@ -34,8 +35,8 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Content="Waist" />
-                        <Button Grid.Column="1" Name="WaistLeft" Content="{materialDesign:PackIcon ArrowLeft}" />
-                        <Button Grid.Column="2" Name="WaistRight" Content="{materialDesign:PackIcon ArrowRight}" />
+                        <Button Grid.Column="1" Name="WaistLeft" Content="{materialDesign:PackIcon ArrowLeft}" Command="{Binding WaistLeftCommand}"/>
+                        <Button Grid.Column="2" Name="WaistRight" Content="{materialDesign:PackIcon ArrowRight}" Command="{Binding WaistRightCommand}"  />
                     </Grid>
                 </Border>
                 <Border>
@@ -46,8 +47,8 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Content="Shoulder" />
-                        <Button Grid.Column="1" Name="ShoulderLeft" Content="{materialDesign:PackIcon ArrowLeft}" />
-                        <Button Grid.Column="2" Name="ShoulderRight" Content="{materialDesign:PackIcon ArrowRight}" />
+                        <Button Grid.Column="1" Name="ShoulderLeft" Content="{materialDesign:PackIcon ArrowLeft}" Command="{Binding ShoulderLeftCommand}" />
+                        <Button Grid.Column="2" Name="ShoulderRight" Content="{materialDesign:PackIcon ArrowRight}" Command="{Binding ShoulderRightCommand}" />
                     </Grid>
                 </Border>
                 <Border>
@@ -58,8 +59,8 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Content="Elbow" />
-                        <Button Grid.Column="1" Name="ElbowLeft" Content="{materialDesign:PackIcon ArrowLeft}" />
-                        <Button Grid.Column="2" Name="ElbowRight" Content="{materialDesign:PackIcon ArrowRight}" />
+                        <Button Grid.Column="1" Name="ElbowLeft" Content="{materialDesign:PackIcon ArrowLeft}" Command="{Binding ElbowLeftCommand}"/>
+                        <Button Grid.Column="2" Name="ElbowRight" Content="{materialDesign:PackIcon ArrowRight}" Command="{Binding ElbowRightCommand}"/>
                     </Grid>
                 </Border>
                 <Border>
@@ -70,8 +71,8 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Content="Twist" />
-                        <Button Grid.Column="1" Name="TwistLeft" Content="{materialDesign:PackIcon ArrowLeft}" />
-                        <Button Grid.Column="2" Name="TwistRight" Content="{materialDesign:PackIcon ArrowRight}" />
+                        <Button Grid.Column="1" Name="TwistLeft" Content="{materialDesign:PackIcon ArrowLeft}" Command="{Binding TwistRightCommand}" />
+                        <Button Grid.Column="2" Name="TwistRight" Content="{materialDesign:PackIcon ArrowRight}" Command="{Binding TwistLeftCommand}" />
                     </Grid>
                 </Border>
                 <Border>
@@ -82,8 +83,8 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Content="Pitch" />
-                        <Button Grid.Column="1" Name="PitchLeft" Content="{materialDesign:PackIcon ArrowLeft}" />
-                        <Button Grid.Column="2" Name="PitchRight" Content="{materialDesign:PackIcon ArrowRight}" />
+                        <Button Grid.Column="1" Name="PitchLeft" Content="{materialDesign:PackIcon ArrowLeft}" Command="{Binding PitchLeftCommand}" />
+                        <Button Grid.Column="2" Name="PitchRight" Content="{materialDesign:PackIcon ArrowRight}" Command="{Binding PitchRightCommand}" />
                     </Grid>
                 </Border>
                 <Border>
@@ -94,19 +95,35 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Content="Roll" />
-                        <Button Grid.Column="1" Name="RollLeft" Content="{materialDesign:PackIcon ArrowLeft}" />
-                        <Button Grid.Column="2" Name="RollRight" Content="{materialDesign:PackIcon ArrowRight}" />
+                        <Button Grid.Column="1" Name="RollLeft" Content="{materialDesign:PackIcon ArrowLeft}" Command="{Binding RollLeftCommand}" />
+                        <Button Grid.Column="2" Name="RollRight" Content="{materialDesign:PackIcon ArrowRight}" Command="{Binding RollRightCommand}" />
                     </Grid>
                 </Border>
             </StackPanel>
         </Grid>
         <Grid Column="0" Row="1">
-            <Slider Minimum="0" Maximum="100" Value="{Binding JogSpeed}" />
-            <TextBlock Text="{Binding JogSpeed}" />
+            <Slider Minimum="0" Maximum="30" Value="{Binding JogSpeed}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="ValueChanged">
+                        <i:InvokeCommandAction
+                            Command="{Binding JogSpeedCommand}"
+                           />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Slider>
+            <!--<TextBlock Text="{Binding JogSpeed}" />-->
         </Grid>
         <Grid Column="0" Row="2">
-            <Slider Minimum="0" Maximum="100" Value="{Binding JogIncrement}" />
-            <TextBlock Text="{Binding JogIncrement}" />
+            <Slider Minimum="0" Maximum="10" Value="{Binding JogIncrement}">
+                <!--<i:Interaction.Triggers>
+                    <i:EventTrigger EventName="ValueChanged">
+                        <i:InvokeCommandAction
+                            Command="{Binding JogSpeedCommand}"
+                        />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>-->
+            </Slider>
+            <!--<TextBlock Text="{Binding JogIncrement}" />-->
         </Grid>
         <Grid Column="1" Row="0">
             <StackPanel>
