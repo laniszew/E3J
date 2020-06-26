@@ -1,0 +1,126 @@
+<?xml version ="1.0"?>
+<SyntaxDefinition name="Custom Highlighting" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+  <Color name="Movement" foreground="#FF0000" fontWeight="bold"/>
+  <Color name="Grip" foreground="#008000" fontWeight="bold"/>
+  <Color name="TimersCounters" foreground="#FF6347" fontWeight="bold"/>
+  <Color name="Programming" foreground="#800080" fontWeight="bold"/>
+  <Color name="Information" foreground="#FFA500" fontWeight="bold"/>
+  <Color name="Other" foreground="#228B22" fontWeight="bold"/>
+
+  <!-- This is the main ruleset. -->
+  <RuleSet>
+    <Span color="Other" begin="'" />
+
+    <Keywords color = "Movement" >
+      <!--MOVEMENT COMMANDS-->
+      <Word>DJ</Word>
+      <Word>DP</Word>
+      <Word>DS</Word>
+      <Word>DW</Word>
+      <Word>IP</Word>
+      <Word>JRC</Word>
+      <Word>MA</Word>
+      <Word>MC</Word>
+      <Word>MJ</Word>
+      <Word>MO</Word>
+      <Word>MP</Word>
+      <Word>MPB</Word>
+      <Word>MPC</Word>
+      <Word>MR</Word>
+      <Word>MRA</Word>
+      <Word>MS</Word>
+      <Word>MT</Word>
+      <Word>MTS</Word>
+      <Word>OG</Word>
+      <!-- ... -->
+    </Keywords>
+
+    <Keywords color = "Grip" >
+      <!--GRIP COMMANDS-->
+      <Word>GC</Word>
+      <Word>GF</Word>
+      <Word>GO</Word>
+      <Word>GP</Word>
+      <Word>SC</Word>
+      <Word>TL</Word>
+    </Keywords>
+
+    <Keywords color = "TimersCounters">
+      <!--TIMERS, COUNTERS-->
+      <Word>AN</Word>
+      <Word>CL</Word>
+      <Word>CP</Word>
+      <Word>CR</Word>
+      <Word>DC</Word>
+      <Word>IC</Word>
+      <Word>LG</Word>
+      <Word>NE</Word>
+      <Word>OR</Word>
+      <Word>PW</Word>
+      <Word>SM</Word>
+      <Word>TI</Word>
+      <Word>XO</Word>
+    </Keywords>
+
+    <Keywords color = "Programming">
+      <!--PROGRAMMING COMMANDS-->
+      <Word>DA</Word>
+      <Word>DL</Word>
+      <Word>EA</Word>
+      <Word>ED</Word>
+      <Word>EQ</Word>
+      <Word>GS</Word>
+      <Word>GT</Word>
+      <Word>HLT</Word>
+      <Word>HO</Word>
+      <Word>ID</Word>
+      <Word>NT</Word>
+      <Word>NW</Word>
+      <Word>NX</Word>
+      <Word>OB</Word>
+      <Word>OPN</Word>
+      <Word>OVR</Word>
+      <Word>PA</Word>
+      <Word>PC</Word>
+      <Word>PD</Word>
+      <Word>PL</Word>
+      <Word>PMW</Word>
+      <Word>PT</Word>
+      <Word>PX</Word>
+      <Word>RC</Word>
+      <Word>RN</Word>
+      <Word>RS</Word>
+      <Word>RT</Word>
+      <Word>SD</Word>
+      <Word>SF</Word>
+      <Word>SP</Word>
+      <Word>TB</Word>
+      <Word>TBD</Word>
+    </Keywords>
+
+    <Keywords color = "Information">
+      <!--INFORMATION COMMANDS-->
+      <Word>DR</Word>
+      <Word>ER</Word>
+      <Word>HE</Word>
+      <Word>INP</Word>
+      <Word>LR</Word>
+      <Word>N</Word>
+      <Word>OC</Word>
+      <Word>OD</Word>
+      <Word>PMR</Word>
+      <Word>PR</Word>
+      <Word>PRN</Word>
+      <Word>QN</Word>
+      <Word>SRT</Word>
+      <Word>VR</Word>
+      <Word>WH</Word>
+      <Word>WT</Word>
+    </Keywords>
+
+    <Keywords color = "Other">
+      <!--ADDITIONAL COMMANDS-->
+      <Word>'</Word>
+    </Keywords>
+  </RuleSet>
+</SyntaxDefinition>

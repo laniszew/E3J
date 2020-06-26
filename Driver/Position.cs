@@ -45,11 +45,14 @@ namespace Driver
             var splitted = position.Split(',');
 
             // Validate input
-            if (!Regex.IsMatch(position, @"^((\+|-)(\d+.\d+,)){7}[R|L],[A|B],[O|C]$") || splitted.Length != 10)
+
+            //Driver.SerialCOM.Read returned  "+81.69,+406.90,+478.80,-169.75,-28.97,+1425.21,R,A,N,C\r"  string
+
+            /*if (!Regex.IsMatch(position, @"^((\+|-)(\d+.\d+,)){7}[R|L],[A|B],[O|C]$") || splitted.Length != 10)
             {
                 Console.Error.WriteLine("Could not create position because the input is invalid.");
                 return null;
-            }
+            }*/
 
             return new Position()
             {
@@ -59,7 +62,7 @@ namespace Driver
                 A = double.Parse(splitted[3], CultureInfo.InvariantCulture),
                 B = double.Parse(splitted[4], CultureInfo.InvariantCulture),
                 L1 = double.Parse(splitted[5], CultureInfo.InvariantCulture),
-                Grab = splitted[9].Equals("O") ? E3JManipulator.GrabE.Open : E3JManipulator.GrabE.Closed
+                Grab = splitted[9].Equals("O") || splitted[9].Equals("O\r") ? E3JManipulator.GrabE.Open : E3JManipulator.GrabE.Closed
             };
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using E3J.Utilities;
 using E3J.ViewModels;
 using PropertyChanged;
 
@@ -14,6 +15,8 @@ namespace E3J.Views
         {
             InitializeComponent();
             DataContext = new MainWindowViewModel();
+            MissingFileManager.CheckForRequiredFiles();
+            Session.Instance.Initialize();
         }
     }
 }

@@ -8,7 +8,6 @@ using Driver;
 using E3J.Messages;
 using E3J.Models;
 using E3J.Models.ValueObjects;
-using E3J.MO;
 
 
 namespace E3J.ViewModels

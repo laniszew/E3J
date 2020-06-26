@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using E3J.Models.ValueObjects;
 
-namespace E3J.MO
+namespace E3J.Models
 
 {
     /// <summary>

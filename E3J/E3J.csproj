@@ -46,6 +46,9 @@
     <Reference Include="FirstFloor.ModernUI, Version=1.0.9.0, Culture=neutral, PublicKeyToken=bc9b0c37bf06c6a9, processorArchitecture=MSIL">
       <HintPath>..\packages\ModernUI.WPF.1.0.9\lib\net45\FirstFloor.ModernUI.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.3.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>..\packages\AvalonEdit.5.0.3\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -60,6 +63,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -82,9 +86,33 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Messages\NewManipulatorConnected.cs" />
+    <Compile Include="Models\AvalonEditBehavior.cs" />
+    <Compile Include="Models\Code Completion\CompletionData.cs" />
+    <Compile Include="Models\Code Completion\Intellisense.cs" />
     <Compile Include="Models\DialogHost.cs" />
     <Compile Include="Models\MessageList.cs" />
+    <Compile Include="Models\ProgramEditor.cs" />
+    <Compile Include="Models\Syntax Check\ITextMarker.cs" />
+    <Compile Include="Models\Syntax Check\SyntaxChecker.cs" />
+    <Compile Include="Models\Syntax Check\SyntaxCheckVisualizer.cs" />
+    <Compile Include="Models\Syntax Check\TextMarkerService.cs" />
+    <Compile Include="Models\ValueObjects\Command.cs" />
     <Compile Include="Models\ValueObjects\Message.cs" />
+    <Compile Include="Resources\EnumExtensions.cs" />
+    <Compile Include="Resources\LinqExtensions.cs" />
+    <Compile Include="Resources\RandomExtensions.cs" />
+    <Compile Include="Utilities\AsynchronousQueryExecutor.cs" />
+    <Compile Include="Utilities\Commands.cs" />
+    <Compile Include="Utilities\ConfigurationService.cs" />
+    <Compile Include="Utilities\Extensions\EnumExtensions.cs" />
+    <Compile Include="Utilities\Extensions\LinqExtensions.cs" />
+    <Compile Include="Utilities\Extensions\RandomExtensions.cs" />
+    <Compile Include="Utilities\Highlighting.cs" />
+    <Compile Include="Utilities\IXMLObject.cs" />
+    <Compile Include="Utilities\Json.cs" />
+    <Compile Include="Utilities\MissingFileManager.cs" />
+    <Compile Include="Utilities\ProgramContentConverter.cs" />
+    <Compile Include="Utilities\Session.cs" />
     <Compile Include="ViewModels\ConnectionSettingsViewModel.cs" />
     <Compile Include="ViewModels\Converters\BrushToColor.cs" />
     <Compile Include="ViewModels\Converters\ColorToBrush.cs" />
@@ -97,11 +125,15 @@
     <Compile Include="ViewModels\Converters\SelectionToBoolean.cs" />
     <Compile Include="ViewModels\Converters\SolidColorToBrush.cs" />
     <Compile Include="ViewModels\Converters\StopBitsToString.cs" />
+    <Compile Include="ViewModels\EditorViewModel.cs" />
     <Compile Include="ViewModels\JogControlViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\SampleViewModel.cs" />
     <Compile Include="Views\ConnectionSettings.xaml.cs">
       <DependentUpon>ConnectionSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Editor.xaml.cs">
+      <DependentUpon>Editor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\JogControl.xaml.cs">
       <DependentUpon>JogControl.xaml</DependentUpon>
@@ -109,6 +141,10 @@
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Icons\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -122,6 +158,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\ConnectionSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Editor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,6 +192,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Others\Resources\Highlighting.xshd" />
+    <Resource Include="Others\Resources\IconFont.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -169,6 +211,45 @@
       <Project>{2531C24D-FAC4-4984-A340-5043CED26B8B}</Project>
       <Name>Driver</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\app_icon.ico" />
+    <Resource Include="Icons\clear_16.png" />
+    <Resource Include="Icons\Comment.png" />
+    <Resource Include="Icons\Create New.png" />
+    <Resource Include="Icons\Delete.png" />
+    <Resource Include="Icons\Download-16.png" />
+    <Resource Include="Icons\Download.png" />
+    <Resource Include="Icons\Export_16.png" />
+    <Resource Include="Icons\floppy_disk_blue.png" />
+    <Resource Include="Icons\floppy_disk_red.png" />
+    <Resource Include="Icons\Font_16.png" />
+    <Resource Include="Icons\Grip.png" />
+    <Resource Include="Icons\industrial_robot-512.ico" />
+    <Resource Include="Icons\Information.png" />
+    <Resource Include="Icons\Invalid.png" />
+    <Resource Include="Icons\Macros.png" />
+    <Resource Include="Icons\Menu-32.png" />
+    <Resource Include="Icons\Movement.png" />
+    <Resource Include="Icons\Open.png" />
+    <Resource Include="Icons\Play-16.png" />
+    <Resource Include="Icons\Play.png" />
+    <Resource Include="Icons\Programming.png" />
+    <Resource Include="Icons\Refresh-16.png" />
+    <Resource Include="Icons\Refresh.png" />
+    <Resource Include="Icons\Save as.png" />
+    <Resource Include="Icons\Save.png" />
+    <Resource Include="Icons\Settings-32.png" />
+    <Resource Include="Icons\Stop.png" />
+    <Resource Include="Icons\TimersCounters.png" />
+    <Resource Include="Icons\Upload-16.png" />
+    <Resource Include="Icons\Upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Session2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Others\Resources\Commands.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.2.1\build\Fody.targets" Condition="Exists('..\packages\Fody.4.2.1\build\Fody.targets')" />

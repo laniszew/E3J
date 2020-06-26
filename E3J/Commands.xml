@@ -1,0 +1,95 @@
+<Commands>
+  <Command name="Grab open" content="GO" regex="^\s*GO\s*$" type="Grip">
+    <Description>Opens the grip of the hand.</Description>
+  </Command>
+  <Command name="Grab close" content="GC" regex="^\s*GC\s*$" type="Grip">
+    <Description>Close the grip of hand.</Description>
+  </Command>
+  <Command name="Where" content="WH" regex=" ^\s*WH\s*$" type="Information">
+    <Description>Reads the coordinates of the current position and the open or close state of the hand. (Using RS-232C)</Description>
+  </Command>
+  <Command name="Comment" content="'" regex="^\s*'[\w\s]+$" type="Comment">
+    <Description>Allows the programmer to write a comment. [up to 120 characters]</Description>
+  </Command>
+  <Command name="Timer" content="TI" regex="^\s*TI\s+([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-3][0-2][0-7][0-6][0-7])\s*$" type="TimersCounters">
+    <Description>Halts the motion for the specified length of time.</Description>
+  </Command>
+  <Command name="Go sub" content="GS" regex="^\s*GS\s+([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9])\s*$" type="Programming">
+    <Description>Carries out subroutine beginning with the specified line number.</Description>
+  </Command>
+  <Command name="Here" content="HE" regex="^\s*HE\s+([0-9]|[1-9][0-9]|[1-9][0-9][0-9])\s*$" type="Information">
+    <Description>Defines the current coordinates as the specified position.</Description>
+  </Command>
+  <Command name="Return" content="RT" regex=" ^\s*RT\s*$" type="Programming">
+    <Description>Completes a subroutine and returns to the main program.</Description>
+  </Command>
+  <Command name="Halt" content="HLT" regex="^\s*HLT\s*$" type="Programming">
+    <Description>Interrupts the motion of the robot and the operation of the program.</Description>
+  </Command>
+  <Command name="End" content="ED" regex="^\s*ED\s*$" type="Programming">
+    <Description>Ends the program.</Description>
+  </Command>
+  <Command name="Speed" content="SP" regex="^\s*SP\s+([1-9]|[1-2][0-9]|30)\s*$" type="Programming">
+    <Description>Sets the operating speed, acceleration or deceleration time and the continuous path setting.</Description>
+  </Command>
+  <Command name="Draw straight" content="DS" regex="^\s*DS\s+(\d+\s*,\s*){2}\d+\s*$" type="Movement">
+    <Description>Moves the end of the hand to a position away from the current position by the distance specified in X, Y, and Z directions. (Joint interpolation)</Description>
+  </Command>  
+  <Command name="Move straight" content="MS" regex="^\s*MS\s+([1-9]|[1-9][0-9]|[1-9][0-9][0-9])\s*,\s*(O|C)?" type="Movement">
+    <Description>Moves the tip of hand to the specified position.</Description>
+  </Command>
+  <Command name="Move continuous" content="MC" regex="^\s*MC\s+([1-9]|[1-9][0-9]|[1-9][0-9][0-9])\s*,\s*([0-9]|[1-9][0-9]|[1-9][0-9][0-9])\s*((,\s*)(O|C))?\s*" type="Movement">
+    <Description>Moves the robot continously through the predefined intermediate points between two specified position numbers.</Description>
+  </Command>
+  <Command name="Move R" content="MR" regex="^\s*MR\s+([0-9]\s*,\s*|[1-9][0-9]\s*,\s*|[1-9][0-9][0-9]\s*,\s*){2}([1-9]|[1-9][0-9]|[1-9][0-9][0-9])\s*((,\s*)(O|C))?\s*$" type="Movement">
+    <Description> Moves the tip of hand through the predefined intermediate positions in circular interpolation.</Description>
+  </Command>
+  <Command name="Move RA" content="MRA" regex="^\s*MRA\s+([0-9]|[1-9][0-9]|[1-9][0-9][0-9])\s*((,\s*)(O|C))?\s*$" type="Movement">
+    <Description>Moves to specified position in circulat interpolation.</Description>
+  </Command>
+  <Command name="Repeat cycle" content="RC" regex="^\s*RC\s+([1-9]|[1-9][0-9]|[1-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-3][0-2][0-7][0-6][0-7])\s*$" type="Programming">
+    <Description>Repeats the loop specified by the NX command the specified number of times.</Description>
+  </Command>
+  <Command name="Next" content="NX" regex="^\s*NX\s*$" type="Programming">
+    <Description>Specifies the range of a loop in a program executed by the RC command.</Description>
+  </Command>
+  <Command name="Number" content="N" regex="^\s*N\s+(\d+|&quot;\w+&quot;)\s*$" type="Programming">
+    <Description>Select the specified program.</Description>
+  </Command>
+  <Command name="Override" content="OVR" regex="^\s*OVR\s+([1-9]|[1-9][0-9]|1[0-9][0-9]|200)\s*$" type="Programming">
+    <Description>Specify program override.</Description>
+  </Command>
+  <Command name="Run" content="RN" regex="^\s*RN\s*(\s+([1-9]|[1-9][0-9]|[1-9][0-9]{2}|[1-9][0-9]{3}))?\s*(,(\s*([1-9]|[1-9][0-9]|[1-9][0-9]{2}|[1-9][0-9]{3})))?\s*(,\s*&quot;[\w\s]{1,8}&quot;\s*)?$" type="Programming">
+    <Description>TODO</Description>
+  </Command>
+  <Command name="Shift" content="SF" regex="^\s*SF\s+([1-9]|[1-9][0-9]|[1-9][0-9]{2})\s*,\s*([1-9]|[1-9][0-9]|[1-9][0-9]{2})$" type="Programming">
+    <Description>TODO</Description>
+  </Command>
+  <Command name="Grip pressure" content="GP" regex="^\s*GP\s+([1-9]|[1-5][0-9]|6[0-3])\s*,\s*([1-9]|[1-5][0-9]|6[0-3])\s*,\s*([1-9]|[1-9][0-9])\s*$" type="Grip">
+    <Description>TODO</Description>
+  </Command>
+  <Command name="Position read" content="PR" regex="^\s*PR\s*([0-9]|[1-9][0-9]|[1-9][0-9]{2}\s*)?$" type="Information">
+    <Description>TODO</Description>
+  </Command>
+  <Command name="Version read" content="VR" regex="^\s*VR\s*$" type="Information">
+    <Description>TODO</Description>
+  </Command>
+  <Command name="Position define" content="PD" regex="^\s*PD\s+([0-9]|[1-9][0-9]|[1-9][0-9]{2})((\s*(,\s*\d{1,4})?(\.\d{1,2})?\s*)|\s*,\s*){3}((,\s*\d+\s*|\s*,\s*){2})?(,\s*(R|L)\s*|\s*,\s*)?(,\s*(A|B)\s*|\s*,\s*)?(,\s*(O|C)\s*|\s*,\s*)?$" type="Programming">
+    <Description>TODO</Description>
+  </Command>
+  <Command name="Add" content="ADD" regex="^\s*ADD\s*\-?\s*(([1-9]|[1-9][0-9]|[1-9][0-9]{2}|[1-9][0-9]{3}|[1-2][0-9]{4}|3[0-1][0-9]{3}|32[0-7][0-6][0-8])|(\&amp;([0-9]|[A-F]){4}))|(\@([1-9]|[1-9][0-9]))$" type="Programming">
+    <Description>TODO</Description>
+  </Command>
+  <Command name="And" content="AN" regex="^\s*AN\s*\-?\s*(([1-9]|[1-9][0-9]|[1-9][0-9]{2}|[1-9][0-9]{3}|[1-2][0-9]{4}|3[0-1][0-9]{3}|32[0-7][0-6][0-8])|(\&amp;([0-9]|[A-F]){4}))$" type="TimersCounters">
+    <Description>TODO</Description>
+  </Command>
+  <Command name="Counter load" content="CL" regex="^\s*CL\s*(\$\s*)?([1-9]|[1-9][0-9])\s*$" type="TimersCounters">
+    <Description>TODO</Description>
+  </Command>
+  <Command name="Compare counter" content="CP" regex="^\s*CP\s*(\$\s*)?([1-9]|[1-9][0-9])\s*$" type="TimersCounters">
+    <Description>TODO</Description>
+  </Command>
+  <Command name="Counter read" content="CR" regex="^\s*CR\s*(\$\s*)?([1-9]|[1-9][0-9])\s*$" type="TimersCounters">
+    <Description>TODO</Description> 
+  </Command>
+</Commands>

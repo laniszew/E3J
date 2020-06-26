@@ -71,27 +71,39 @@ namespace E3J.ViewModels
         }
 
         [Command]
-        public void PitchLeftCommand()
+        public void TwistLeftCommand()
         {
             Manipulator.MoveJoint(0, 0, 0, -JogIncrement);
         }
 
         [Command]
-        public void PitchRightCommand()
+        public void TwistRightCommand()
         {
             Manipulator.MoveJoint(0, 0, 0, JogIncrement);
         }
 
         [Command]
-        public void RollLeftCommand()
+        public void PitchLeftCommand()
         {
             Manipulator.MoveJoint(0, 0, 0, 0, -JogIncrement);
         }
 
         [Command]
-        public void RollRightCommand()
+        public void PitchRightCommand()
         {
             Manipulator.MoveJoint(0, 0, 0, 0, JogIncrement);
+        }
+
+        [Command]
+        public void RollLeftCommand()
+        {
+            Manipulator.MoveJoint(0, 0, 0, 0, 0, -JogIncrement);
+        }
+
+        [Command]
+        public void RollRightCommand()
+        {
+            Manipulator.MoveJoint(0, 0, 0, 0, 0, JogIncrement);
         }
 
         [Command]

@@ -26,5 +26,6 @@
         </HeaderedItemsControl>-->
         <Frame Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Source="ConnectionSettings.xaml" NavigationUIVisibility="Hidden" VerticalAlignment="Top" />
         <Frame Grid.Row="1" Grid.Column="1" Source="JogControl.xaml" NavigationUIVisibility="Hidden" VerticalAlignment="Top" />   
+        <Frame Grid.Row="1" Grid.Column="2" Source="Editor.xaml" NavigationUIVisibility="Hidden" VerticalAlignment="Bottom" />   
     </Grid>
 </Page>

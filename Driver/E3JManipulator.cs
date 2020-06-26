@@ -432,12 +432,13 @@ namespace Driver
         /// <param name="waistJointAngle">Specify relative amount of each joint turning from the current position.</param>
         /// <param name="shoulderJointAngle">Specify relative amount of each joint turning from the current position.</param>
         /// <param name="elbowJointAngle">Specify relative amount of each joint turning from the current position.</param>
+        /// <param name="twistJointAngle">Specify relative amount of each joint turning from the current position.</param>
         /// <param name="pitchJointAngle">Specify relative amount of each joint turning from the current position.</param>
         /// <param name="rollJointAngle">Specify relative amount of each joint turning from the current position.</param>
-        public void MoveJoint(double waistJointAngle = 0, double shoulderJointAngle = 0, double elbowJointAngle = 0,
+        public void MoveJoint(double waistJointAngle = 0, double shoulderJointAngle = 0, double elbowJointAngle = 0, double twistJointAngle = 0,
                                double pitchJointAngle = 0, double rollJointAngle = 0)
         {
-            Port.Write($"MJ {waistJointAngle},{shoulderJointAngle},{elbowJointAngle},{pitchJointAngle},{rollJointAngle}");
+            Port.Write($"MJ {waistJointAngle},{shoulderJointAngle},{elbowJointAngle},{twistJointAngle},{pitchJointAngle},{rollJointAngle}");
         }
 
         /// <summary>
